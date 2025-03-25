@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<head>
+    <link rel="stylesheet" href="{% static 'prices.css' %}">
+    <style>
+        li {
+            position: relative;
+            padding-left: 20px;
+        }
+        
+        li::before {
+            content: "•";
+            color: #4a0072;
+            font-weight: bold;
+            position: absolute;
+            left: 5px;
+        }
+        
+        .pricing-container, .info-container {
+            width: 95%;
+            max-width: 950px;
+        }
+        
+        .box {
+            padding: 12px;
+        }
+    </style>
+</head>
+
+<div class="pricing-container">
+    <div class="left-container">
+        <div class="box">
+            <h2>Tarife Activitate</h2>
+            <ul>
+                <li>Consultanță: 200 lei/oră</li>
+                <li>PFA activitate mică: începând de la 150 lei/lună</li>
+                <li>PFA activitate medie: 300 lei/lună</li>
+                <li>PFA activitate mare: 1000 lei/lună</li>
+            </ul>
+        </div>
+        
+        <div class="box">
+            <h2>Alte Servicii</h2>
+            <ul>
+                <li>Închiriere sediu social: de la 20 euro/lună</li>
+                <li>Reglare situație ANAF declarații/plăți: 200 lei</li>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="right-container">
+        <div class="box">
+            <h2>Tarife Variabile</h2>
+            <ul>
+                <li>Depunere declarații unică: de la 100 lei</li>
+                <li>Creare cont SPV persoane fizice/juridice</li>
+                <li>Depunere online contracte închiriere</li>
+                <li>Declarare mijloace fixe DITL</li>
+                <li>Tarifele pot varia în funcție de volumul de activitate</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="info-container">
+    <div class="box">
+        <p>Tarifele variabile se negociaza in functie de marimea activitatii(mica,medie sau mare) si se stabilesc inca de la inceputul colaborarii.</p>
+    </div>
+</div>
+{% endblock %}

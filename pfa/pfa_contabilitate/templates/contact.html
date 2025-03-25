@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<head>
+    <link rel="stylesheet" href="{% static 'contact.css' %}">
+</head>
+
+<div id="contact-section" class="contact-info" style="color: #000 !important;">
+    <h2 style="color: #000 !important;">Contact</h2>
+    <p style="color: #000 !important;"><strong style="color: #000 !important;">Telefon:</strong> <a href="tel:0722614766" style="color: #4a0e4e !important;">0722614766</a></p>
+    <p style="color: #000 !important;"><strong style="color: #000 !important;">Email:</strong> <a href="mailto:livia.alessio@yahoo.com" style="color: #4a0e4e !important;"><u>livia.alessio@yahoo.com</u></a></p>
+    <p style="color: #000 !important;"><strong style="color: #000 !important;">Adresa:</strong> <a href="https://maps.app.goo.gl/wgLL3gaSANhtG2CJ9" target="blank" style="color: #4a0e4e !important;"><u>Soseaua Alexandria nr.9, bloc 4, scara H, parter, apt.71</u></a></p>
+</div>
+
+<div id="map-container">
+    <div id="map"></div>
+</div>
+
+<script>
+var map = L.map('map').setView([44.403532, 26.059423], 16.5);
+L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 20,
+}).addTo(map);
+
+L.marker([44.403532, 26.059423]).addTo(map)
+.bindPopup('<p3>Nr.9, Bloc 4, Scara H, Parter, Apt.71</p3>');
+</script>
+{% endblock %}

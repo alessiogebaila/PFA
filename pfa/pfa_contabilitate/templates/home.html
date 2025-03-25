@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<head>
+    <link rel="stylesheet" href="{% static 'home.css' %}">
+</head>
+
+<body>
+    <div class="content">
+        <div class="top-row">
+            <div class="content-container">
+                <div class="description">
+                    <h3>Descriere</h3>
+                    <p>Gebaila Livia este un consultant fiscal cu experiență încă din anul 2007, oferind servicii complete de consultanță și contabilitate. Cu o experiență solidă în interpretarea obligațiilor fiscale și în optimizarea costurilor, ea ajută clienții să respecte toate reglementările în vigoare.</p>
+                </div>
+            </div>
+
+            <div class="content-container">
+                <div class="services">
+                    <h3>Servicii</h3>
+                    <ul>
+                        <li>Consultanță în domeniul impozitelor și taxelor</li>
+                        <li>Asistență în întocmirea declarațiilor fiscale</li>
+                        <li>Planificare fiscală și optimizare</li>
+                        <li>Servicii de contabilitate și raportare financiară</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="bottom-row">
+            <div class="content-container">
+                <div class="mission">
+                    <h3>Misiune</h3>
+                    <p>Să oferim soluții personalizate și eficiente, contribuind la succesul și dezvoltarea afacerilor clienților noștri.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+{% endblock %}

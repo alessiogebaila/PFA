@@ -1,0 +1,25 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formular Înscris cu Succes</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'form_completed.css' %}">    
+</head>
+
+<body>
+    <div class="container">
+        <div class="icon">
+            <i class="fas fa-check-circle"></i>
+        </div>
+        <h1>Formular Înscris cu Succes!</h1>
+        <p>Vă mulțumim pentru completarea formularului. Veți fi contactat în curând.</p>
+        <a href="{% url 'home' %}">Înapoi la meniul principal</a>
+        <footer>
+            &copy; {%now 'Y'%} Consultant Fiscal Gebaila Livia. Toate drepturile rezervate.
+        </footer>
+    </div>
+</body>
+</html>

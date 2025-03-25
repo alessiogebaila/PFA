@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{%load static%}
+{% block content %}
+
+<head>
+    <link rel="stylesheet" href="{% static 'our_services.css' %}">
+</head>
+<body>
+    <div class="content">
+        <div class="service-container" onmouseover="toggleDescription(this)" onmouseout="toggleDescription(this)">
+            <h2>Consultanță</h2>
+            <p>Consultanță fiscală</p>
+            <p class="service-description">Servicii complete de consultanță fiscală.</p>
+            <p>Consultanță impozite si taxe</p>
+            <p class="service-description">Consultanță pentru optimizarea impozitelor și a taxelor pentru persoane fizice și juridice.</p>
+            <p>Consultanță in domeniul chiriilor</p>
+            <p class="service-description">Suport în gestionarea fiscalității legate de proprietăți și chirii.</p>
+        </div>
+        
+        <div class="service-container" onmouseover="toggleDescription(this)" onmouseout="toggleDescription(this)">
+            <h2>Consultanță în Afaceri</h2>
+            <p>Achiziții, Imobilizări</p>
+            <p class="service-description">Servicii dedicate optimizării achizițiilor și administrării imobilizărilor în afaceri.</p>
+            <p>Optimizare afaceri</p>
+            <p class="service-description">Consultanță personalizată pentru optimizarea proceselor de business și creșterea eficienței.</p>
+        </div>
+        
+        <div class="service-container" onmouseover="toggleDescription(this)" onmouseout="toggleDescription(this)">
+            <h2>Servicii ANAF</h2>
+            <p>Creare cod EORI</p>
+            <p class="service-description">Asistență în crearea codului EORI necesar pentru activitățile vamale și comerciale internaționale.</p>
+            <p>Creare SPV si depunere documente pe platformele ANAF si DITL</p>
+            <p class="service-description">Suport pentru crearea contului SPV și depunerea documentelor fiscale pe platformele oficiale ANAF și DITL.</p>
+            <p>Inlesnire eFactura/ Facturare SPV</p>
+            <p class="service-description"> Utilizarea sistemului eFactura și managementul facturilor prin intermediul SPV.</p>
+        </div>
+        
+        <div class="service-container" onmouseover="toggleDescription(this)" onmouseout="toggleDescription(this)">
+            <h2>Servicii Reprezentare</h2>
+            <p>Reprezentare în Fața Organelor de Control</p>
+            <p class="service-description">Sprijin pentru reprezentarea în fața autorităților de control, asigurând respectarea drepturilor tale.</p>
+        </div>
+    </div>
+
+    <script>
+        function toggleDescription(container) {
+            container.classList.toggle('expanded');
+        }
+    </script>        
+    
+</body>
+
+{% endblock %}

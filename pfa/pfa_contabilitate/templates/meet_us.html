@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Programare Întâlnire - Consultant Fiscal Gebaila Livia</title>
+    <link rel="stylesheet" href="{% static 'meet_us.css' %}">
+    <style>
+        body {
+            background-image: url("{% static 'images/birou.jpeg' %}");
+        }
+        .content {
+            flex: 1;
+            padding: 20px;
+            max-width: 800px;
+            margin: 40px auto;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            border-radius: 10px;
+            position: relative;
+            z-index: 1;
+        }
+        .navbar {
+            margin-bottom: 0;
+            border-radius:0 0 15px 15px;
+        }
+        footer {
+            border-radius:15px 15px 0 0;
+            margin-top: 0;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="header">
+        <img src="{%static 'images/CCF.png'%}" alt="Logo" class="logo">
+        <h1>Consultant Fiscal - Gebaila Livia</h1>
+    </div>
+    <div class="navbar">
+        <a href="{% url 'home' %}" {% if request.path == '/' %}class="active"{% endif %}>Acasă</a>
+        <a href="{% url 'meet_us' %}" {% if request.path == '/meet_us/' %}class="active"{% endif %}>Programați o întâlnire</a>
+        <a href="{% url 'our_services' %}" {% if request.path == '/our_services/' %}class="active"{% endif %}>Serviciile noastre</a>
+        <a href="{% url 'prices' %}" {% if request.path == '/prices/' %}class="active"{% endif %}>Prețuri</a>
+        <a href="{% url 'contact' %}" {% if request.path == '/contact/' %}class="active"{% endif %}>Contact</a>
+    </div>
+
+
+    <div class="content">
+        <h2>Doriți să colaborăm? Programați o întâlnire.</h2>
+
+        <form action="" method="post">
+            {% csrf_token %}
+            
+            <label for="nume">Nume:</label>
+            <input type="text" name="nume" id="nume" placeholder="Introduceți numele" required>
+
+            <label for="firma">Numele firmei:</label>
+            <input type="text" name="firma" id="firma" placeholder="Introduceți numele firmei" required>
+
+            <label for="email">Email:</label>
+            <input type="email" name="email" id="email" placeholder="Introduceți adresa de email" required>
+
+            <label for="telefon">Număr de telefon:</label>
+            <input type="tel" name="telefon" id="telefon" placeholder="Introduceți numărul de telefon" required>
+
+            <label for="data">Data întâlnirii:</label>
+            <input type="date" name="data" id="data" required>
+
+            <label for="ora">Ora întâlnirii:</label>
+            <select name="ora" id="ora" required>
+                <option value="">Alegeți o oră</option>
+            </select>
+
+            <label for="mesaj">Mesaj suplimentar:</label>
+            <textarea name="mesaj" id="mesaj" rows="4" placeholder="Scrieți un mesaj suplimentar pentru a vă descrie activitatea (opțional)"></textarea>
+
+            <button type="submit">Trimite</button>
+        </form>
+    </div>
+
+    <footer>
+        &copy; {% now 'Y'%} Consultant Fiscal Gebaila Livia. Toate drepturile rezervate.
+    </footer>
+
+    <script>
+        const today = new Date();
+        const dd = String(today.getDate()).padStart(2, '0');
+        const mm = String(today.getMonth() + 1).padStart(2, '0'); 
+        const yyyy = today.getFullYear();
+
+        const minDate = yyyy + '-' + mm + '-' + dd;
+        document.getElementById('data').setAttribute('min', minDate);
+
+        document.getElementById('data').addEventListener('change', function () {
+            const selectedDate = new Date(this.value);
+            const day = selectedDate.getUTCDay();
+
+            if (day === 0 || day === 6) {
+                alert('Vă rugăm să selectați o zi lucrătoare (Luni - Vineri).');
+                this.value = ''; 
+            }
+        });
+
+        const oraSelect = document.getElementById('ora');
+        for (let hour = 9; hour <= 16; hour++) {
+            const hour00 = hour.toString().padStart(2, '0');
+            oraSelect.innerHTML += `<option value="${hour00}:00">${hour00}:00</option>`;
+            oraSelect.innerHTML += `<option value="${hour00}:30">${hour00}:30</option>`;
+        }
+
+        const telefonInput = document.getElementById('telefon');
+        telefonInput.addEventListener('input', function (e) {
+            this.value = this.value.replace(/[^0-9]/g, '');
+        });
+        
+        function validateForm() {
+            const telefonValue = telefonInput.value;
+            if (telefonValue.length < 10) {
+                alert('Numărul de telefon trebuie să aibă cel puțin 10 cifre.');
+                return false;
+            }
+            return true;
+        }
+
+        function checkAvailability() {
+            const date = document.getElementById('data').value;
+            const time = document.getElementById('ora').value;
+
+            if (date && time) {
+                fetch(`/check_availability/?date=${date}&time=${time}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        if (!data.available) {
+                            alert('Acest interval orar este deja rezervat. Vă rugăm să alegeți altul.');
+                            document.getElementById('ora').value = '';
+                        }
+                    });
+            }
+        }
+
+        document.getElementById('data').addEventListener('change', checkAvailability);
+        document.getElementById('ora').addEventListener('change', checkAvailability);
+
+    </script>
+</body>
+</html>
