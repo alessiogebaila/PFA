@@ -56,3 +56,22 @@ footer {
     font-size: 0.9em;
     color: #777;
 }
+
+/* Phone */
+@media (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+    .container {
+        padding: 20px;
+    }
+    h1 {
+        font-size: 1.5em;
+    }
+    p {
+        font-size: 1em;
+    }
+    .icon {
+        font-size: 40px;
+    }
+}

@@ -3,6 +3,7 @@ from django.core.exceptions import ValidationError
 
 
 class Pfa(models.Model):
+    firma_destinatie = models.CharField(max_length=100, null=True, blank=True, default='Consultant Fiscal - Gebaila Livia')
     nume = models.CharField(max_length=100,null=False,blank=False)
     firma = models.CharField(max_length=100,null=False,blank=False)
     email = models.EmailField(null=False,blank=False)

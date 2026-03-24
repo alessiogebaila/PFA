@@ -4,7 +4,7 @@
     {% load static %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Programare Întâlnire - Consultant Fiscal Gebaila Livia</title>
+    <title>Programați o întâlnire</title>
     <link rel="stylesheet" href="{% static 'meet_us.css' %}">
     <style>
         body {
@@ -30,15 +30,35 @@
             margin-top: 0;
         }
 
+        @media (max-width: 768px) {
+            .content {
+                max-width: 95%;
+                margin: 20px auto;
+            }
+        }
+        @media (max-width: 480px) {
+            .content {
+                max-width: 100%;
+                margin: 10px auto;
+                padding: 12px;
+                border-radius: 5px;
+            }
+            footer {
+                font-size: 0.85em;
+            }
+        }
+
     </style>
 </head>
 <body>
     <div class="header">
         <img src="{%static 'images/CCF.png'%}" alt="Logo" class="logo">
-        <h1>Consultant Fiscal - Gebaila Livia</h1>
+        <h1>Programați o întâlnire</h1>
     </div>
     <div class="navbar">
-        <a href="{% url 'home' %}" {% if request.path == '/' %}class="active"{% endif %}>Acasă</a>
+        <a href="{% url 'home' %}" {% if request.path == '/' %}class="active"{% endif %}>Consultant Fiscal</a>
+        <a href="{% url 'perfect_team_invest' %}" {% if request.path == '/perfect_team_invest/' %}class="active"{% endif %}>Perfect Team Invest</a>
+        <a href="{% url 'perfect_team_finance' %}" {% if request.path == '/perfect_team_finance/' %}class="active"{% endif %}>Perfect Team Finance</a>
         <a href="{% url 'meet_us' %}" {% if request.path == '/meet_us/' %}class="active"{% endif %}>Programați o întâlnire</a>
         <a href="{% url 'our_services' %}" {% if request.path == '/our_services/' %}class="active"{% endif %}>Serviciile noastre</a>
         <a href="{% url 'prices' %}" {% if request.path == '/prices/' %}class="active"{% endif %}>Prețuri</a>
@@ -51,7 +71,15 @@
 
         <form action="" method="post">
             {% csrf_token %}
-            
+
+            <label for="firma_destinatie">Programare pentru:</label>
+            <select name="firma_destinatie" id="firma_destinatie" required>
+                <option value="">Alegeți firma</option>
+                <option value="Consultant Fiscal - Gebaila Livia">Consultant Fiscal - Gebaila Livia</option>
+                <option value="Perfect Team Invest">Perfect Team Invest</option>
+                <option value="Perfect Team Finance">Perfect Team Finance</option>
+            </select>
+
             <label for="nume">Nume:</label>
             <input type="text" name="nume" id="nume" placeholder="Introduceți numele" required>
 

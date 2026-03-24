@@ -26,7 +26,7 @@
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-h3{
+h3 {
     text-align: center;
     color: #4a0072;
 }
@@ -41,7 +41,7 @@ ul {
 }
 
 ul li::before {
-    content: "•";
+    content: "\2022";
     color: #4a0072;
     font-weight: bold;
     display: inline-block;
@@ -49,7 +49,7 @@ ul li::before {
     margin-left: -1em;
 }
 
-/* Tablet */
+/* Responsive */
 @media (max-width: 768px) {
     .top-row {
         flex-direction: column;
@@ -60,7 +60,6 @@ ul li::before {
     }
 }
 
-/* Phone */
 @media (max-width: 480px) {
     .top-row {
         width: 100%;
@@ -69,20 +68,7 @@ ul li::before {
     .bottom-row {
         width: 100%;
     }
-    .content {
-        padding: 10px;
-    }
     .content-container {
         padding: 15px;
-    }
-}
-
-/* Large desktops */
-@media (min-width: 1400px) {
-    .top-row {
-        width: 60%;
-    }
-    .bottom-row {
-        width: 60%;
     }
 }

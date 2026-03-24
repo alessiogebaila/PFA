@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Perfect Team Invest{% endblock %}
+{% block header_title %}Perfect Team Invest{% endblock %}
+
+{% block content %}
+<head>
+    <link rel="stylesheet" href="{% static 'perfect_team_invest.css' %}">
+</head>
+
+<body>
+    <div class="content">
+        <div class="top-row">
+            <div class="content-container">
+                <div class="description">
+                    <h3>Despre Perfect Team Invest</h3>
+                    <p>Perfect Team Invest este o companie dedicată serviciilor de investiții și consultanță financiară. Cu o echipă de profesioniști cu experiență, oferim soluții personalizate pentru dezvoltarea și protejarea capitalului dumneavoastră.</p>
+                </div>
+            </div>
+
+            <div class="content-container">
+                <div class="services">
+                    <h3>Serviciile Noastre</h3>
+                    <ul>
+                        <li>Consultanță în investiții imobiliare</li>
+                        <li>Administrare portofolii de investiții</li>
+                        <li>Analiză și evaluare de proiecte de investiții</li>
+                        <li>Strategii de diversificare a capitalului</li>
+                        <li>Asistență în achiziții și fuziuni</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="bottom-row">
+            <div class="content-container">
+                <div class="mission">
+                    <h3>Misiunea Noastră</h3>
+                    <p>Ne propunem să oferim clienților noștri cele mai bune oportunități de investiții, bazate pe analize riguroase și o înțelegere profundă a pieței. Succesul clienților noștri este succesul nostru.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+{% endblock %}

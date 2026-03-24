@@ -5,7 +5,7 @@ from .models import Pfa
 class PfaSerializer(serializers.ModelSerializer):
     class Meta:
         model = Pfa
-        fields = ['id', 'nume', 'firma', 'email', 'telefon', 'data', 'ora', 'mesaj']
+        fields = ['id', 'firma_destinatie', 'nume', 'firma', 'email', 'telefon', 'data', 'ora', 'mesaj']
         
     def validate(self, data):
         """

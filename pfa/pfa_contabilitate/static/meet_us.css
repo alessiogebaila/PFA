@@ -23,6 +23,7 @@ body {
 .logo {
     width: 89px;
     height: 80px;
+    z-index: 1;
 }
 
 .header h1 {
@@ -38,13 +39,18 @@ body {
     background-color: #6d1b7b;
     padding: 10px 0;
     text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 5px;
 }
 .navbar a {
     color: white;
     text-decoration: none;
-    margin: 0 15px;
+    margin: 0 10px;
     font-weight: bold;
     transition: color 0.3s;
+    padding: 5px 8px;
 }
 .navbar a:hover, .navbar a.active {
     color: #f1c40f;
@@ -99,4 +105,79 @@ footer {
     text-align: center;
     padding: 10px 0;
     margin-top: 20px;
+}
+
+/* Tablet */
+@media (max-width: 768px) {
+    .header h1 {
+        font-size: 1.3em;
+        position: relative;
+        left: auto;
+        transform: none;
+        width: auto;
+        flex: 1;
+        text-align: center;
+    }
+    .logo {
+        width: 60px;
+        height: 54px;
+    }
+    .navbar a {
+        margin: 3px 6px;
+        font-size: 0.9em;
+    }
+    .content {
+        max-width: 95%;
+        padding: 15px;
+        margin: 20px auto;
+    }
+}
+
+/* Phone */
+@media (max-width: 480px) {
+    .header {
+        padding: 8px 10px;
+    }
+    .header h1 {
+        font-size: 1em;
+    }
+    .logo {
+        width: 50px;
+        height: 45px;
+    }
+    .navbar {
+        flex-direction: column;
+        align-items: center;
+        gap: 2px;
+    }
+    .navbar a {
+        margin: 2px 0;
+        font-size: 0.95em;
+        display: block;
+        padding: 6px 10px;
+    }
+    .content {
+        max-width: 100%;
+        padding: 12px;
+        margin: 10px auto;
+        border-radius: 0;
+        box-shadow: none;
+    }
+    h2 {
+        font-size: 1.2em;
+    }
+}
+
+/* Large desktops */
+@media (min-width: 1400px) {
+    .header h1 {
+        font-size: 2.5em;
+    }
+    .navbar a {
+        font-size: 1.1em;
+        margin: 0 18px;
+    }
+    .content {
+        max-width: 900px;
+    }
 }

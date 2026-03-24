@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Perfect Team Finance{% endblock %}
+{% block header_title %}Perfect Team Finance{% endblock %}
+
+{% block extra_badge %}
+<img src="{% static 'images/sigla-CECCAR.png' %}" alt="CECCAR" class="ceccar-badge">
+{% endblock %}
+
+{% block content %}
+<head>
+    <link rel="stylesheet" href="{% static 'perfect_team_finance.css' %}">
+</head>
+
+<body>
+    <div class="content">
+        <div class="top-row">
+            <div class="content-container">
+                <div class="description">
+                    <h3>Despre Perfect Team Finance</h3>
+                    <p>Perfect Team Finance oferă servicii complete de contabilitate și gestiune financiară pentru companii de toate dimensiunile. Cu o abordare profesională și personalizată, asigurăm conformitatea fiscală și optimizarea costurilor.</p>
+                </div>
+            </div>
+
+            <div class="content-container">
+                <div class="services">
+                    <h3>Serviciile Noastre</h3>
+                    <ul>
+                        <li>Contabilitate primară și financiară</li>
+                        <li>Întocmirea și depunerea declarațiilor fiscale</li>
+                        <li>Raportări financiare și bilanțuri</li>
+                        <li>Salarizare și administrare personal</li>
+                        <li>Consultanță fiscală și financiară</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="bottom-row">
+            <div class="content-container">
+                <div class="mission">
+                    <h3>Misiunea Noastră</h3>
+                    <p>Oferim soluții financiare eficiente și transparente, ajutând companiile să se concentreze pe dezvoltarea afacerii, în timp ce noi ne ocupăm de partea financiar-contabilă.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+{% endblock %}

@@ -9,6 +9,12 @@ from .models import Pfa
 def home_view(request):
     return render(request, 'home.html')
 
+def perfect_team_invest_view(request):
+    return render(request, 'perfect_team_invest.html')
+
+def perfect_team_finance_view(request):
+    return render(request, 'perfect_team_finance.html')
+
 def contact_view(request):
     return render(request,'contact.html')
 
@@ -16,6 +22,7 @@ def meet_us_view(request):
     if request.method == 'POST':
         try:
             id_client = request.POST.get('id')
+            firma_destinatie_client = request.POST.get('firma_destinatie')
             nume_client = request.POST.get('nume')
             firma_client = request.POST.get('firma')
             email_client = request.POST.get('email')
@@ -24,14 +31,14 @@ def meet_us_view(request):
             ora_client = request.POST.get('ora')
             mesaj_client = request.POST.get('mesaj')
             
-            client = Pfa(id=id_client, nume=nume_client, firma=firma_client, email=email_client, 
+            client = Pfa(id=id_client, firma_destinatie=firma_destinatie_client, nume=nume_client, firma=firma_client, email=email_client, 
                          telefon=telefon_client, data=data_client, ora=ora_client, mesaj=mesaj_client)
             client.save()
             
             # Send email to the client
             send_mail(
                 'Intalnire confirmata',
-                f'''Va multumim, {nume_client} de la firma {firma_client}, pentru programarea intalnirii. Am primit cererea dumneavoatra pentru data de {data_client} la ora {ora_client}.
+                f'''Va multumim, {nume_client} de la firma {firma_client}, pentru programarea intalnirii la {firma_destinatie_client}. Am primit cererea dumneavoatra pentru data de {data_client} la ora {ora_client}.
                 Va asteptam cu drag!''',
                 'alessio.andrei276@gmail.com',  # From email
                 [email_client], 
@@ -42,7 +49,7 @@ def meet_us_view(request):
             host_email = 'alessio.andrei276@gmail.com'  # my email
             send_mail(
                 'Intalnire noua',
-                f"O noua intalnire a fost programata de {nume_client} de la firma {firma_client} pentru data de {data_client} la ora {ora_client}.",
+                f"O noua intalnire a fost programata de {nume_client} de la firma {firma_client} pentru {firma_destinatie_client} pe data de {data_client} la ora {ora_client}.",
                 'alessio.andrei276@gmail.com',
                 [host_email],
                 fail_silently=False,

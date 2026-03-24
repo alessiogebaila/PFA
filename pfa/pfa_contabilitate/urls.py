@@ -10,6 +10,8 @@ from .api_views import (
 urlpatterns = [
     # Traditional Django views (keep for backward compatibility)
     path('',home_view,name='home'),
+    path('perfect_team_invest/',perfect_team_invest_view,name='perfect_team_invest'),
+    path('perfect_team_finance/',perfect_team_finance_view,name='perfect_team_finance'),
     path('contact/',contact_view,name='contact'),
     path('meet_us/',meet_us_view,name='meet_us'),
     path('success/',success_view,name='success'),
