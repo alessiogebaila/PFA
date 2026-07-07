@@ -128,15 +128,32 @@ body {
         transform: scale(1.3);
     }
     .navbar {
-        flex-direction: column;
-        align-items: center;
-        gap: 2px;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        justify-content: flex-start;
+        padding: 8px 5px;
+        gap: 0;
+        scrollbar-width: thin;
+        scrollbar-color: #f1c40f #6d1b7b;
+    }
+    .navbar::-webkit-scrollbar {
+        height: 4px;
+    }
+    .navbar::-webkit-scrollbar-track {
+        background: #6d1b7b;
+    }
+    .navbar::-webkit-scrollbar-thumb {
+        background-color: #f1c40f;
+        border-radius: 2px;
     }
     .navbar a {
-        margin: 2px 0;
-        font-size: 0.95em;
-        display: block;
-        padding: 6px 10px;
+        margin: 0 6px;
+        font-size: 0.9em;
+        white-space: nowrap;
+        flex-shrink: 0;
+        padding: 6px 8px;
     }
 }
 

@@ -40,17 +40,18 @@ def meet_us_view(request):
                 'Intalnire confirmata',
                 f'''Va multumim, {nume_client} de la firma {firma_client}, pentru programarea intalnirii la {firma_destinatie_client}. Am primit cererea dumneavoatra pentru data de {data_client} la ora {ora_client}.
                 Va asteptam cu drag!''',
-                'alessio.andrei276@gmail.com',  # From email
+                'office.contabilteam@gmail.com',  # From email
                 [email_client], 
                 fail_silently=False,
             )
             
             # Send email to the host
-            host_email = 'alessio.andrei276@gmail.com'  # my email
+            #host_email = 'alessio.andrei276@gmail.com'  # old host email
+            host_email = 'office.contabilteam@gmail.com'  # host email
             send_mail(
                 'Intalnire noua',
                 f"O noua intalnire a fost programata de {nume_client} de la firma {firma_client} pentru {firma_destinatie_client} pe data de {data_client} la ora {ora_client}.",
-                'alessio.andrei276@gmail.com',
+                'office.contabilteam@gmail.com',
                 [host_email],
                 fail_silently=False,
             )

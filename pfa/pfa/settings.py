@@ -139,9 +139,11 @@ EMAIL_HOST = 'smtp.gmail.com'         ##gmail
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 #EMAIL_HOST_USER = 'livia.alessio@yahoo.com'  ##yahoo mama
-EMAIL_HOST_USER = 'alessio.andrei276@gmail.com' ##gmail als
-EMAIL_HOST_PASSWORD = 'ogbs rfrb qdfn cnzy'  # Replace with your app password (gmail als)
-DEFAULT_FROM_EMAIL = 'alessio.andrei276@gmail.com'
+#EMAIL_HOST_USER = 'alessio.andrei276@gmail.com' ##gmail als
+#EMAIL_HOST_PASSWORD = 'ogbs rfrb qdfn cnzy'  # app password (gmail als)
+EMAIL_HOST_USER = 'office.contabilteam@gmail.com'  ##gmail office
+EMAIL_HOST_PASSWORD = 'wxqn erev keni jgtc'  # app password (gmail office)
+DEFAULT_FROM_EMAIL = 'office.contabilteam@gmail.com'
 
 
 # Django REST Framework
