@@ -1,70 +1,100 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
- 
+
 @layer base {
-  :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
-    --secondary: 210 40% 96%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-    --muted: 210 40% 96%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-    --accent: 210 40% 96%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
-    --radius: 0.5rem;
-  }
- 
-  .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-  }
-}
- 
-@layer base {
-  * {
-    @apply border-border;
-  }
-  body {
-    @apply bg-background text-foreground;
-    margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-      sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 88px; /* fixed navbar height */
   }
 
-  code {
-    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-      monospace;
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  body {
+    @apply font-body text-ink antialiased;
+    /* Brand background replicated in code: magenta glow top-left → deep indigo bottom-right */
+    background-color: #2e1065;
+    background-image: radial-gradient(120% 120% at 0% 0%, #b01fd4 0%, #7c28ce 32%, #4c1d95 62%, #2a1173 82%, #1e0a4e 100%);
+    background-attachment: fixed;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display;
+  }
+
+  :focus-visible {
+    outline: 3px solid #facc15;
+    outline-offset: 2px;
+  }
+
+  /* Scrollbar in brand colors (Firefox) */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #7c3aed transparent;
+  }
+  html {
+    scrollbar-color: #7c3aed #21094f;
+  }
+
+  /* Scrollbar in brand colors (Chrome/Edge/Safari) */
+  ::-webkit-scrollbar {
+    width: 11px;
+    height: 11px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  html::-webkit-scrollbar-track {
+    background: #21094f;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #7c3aed;
+    border-radius: 999px;
+    border: 2px solid transparent;
+    background-clip: padding-box;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #facc15;
+    background-clip: padding-box;
+  }
+}
+
+@layer components {
+  .paper-card {
+    @apply rounded-3xl bg-paper text-ink shadow-[0_20px_60px_-20px_rgba(20,5,60,0.55)];
+  }
+
+  .section-eyebrow {
+    @apply mb-3 inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.2em] text-amber-400;
+  }
+
+  .btn-cta {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-amber-400 px-7 py-3.5 font-display text-base font-bold text-violet-950 shadow-[0_10px_30px_-8px_rgba(250,204,21,0.55)] transition hover:-translate-y-0.5 hover:bg-amber-300 hover:shadow-[0_14px_36px_-8px_rgba(250,204,21,0.7)] active:translate-y-0;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-white/25 bg-white/5 px-6 py-3 font-semibold text-white backdrop-blur transition hover:border-white/50 hover:bg-white/10;
+  }
+
+  .field-label {
+    @apply mb-1.5 block text-sm font-semibold text-ink;
+  }
+
+  .field-input {
+    @apply w-full rounded-xl border-violet-900/15 bg-white px-4 py-3 text-ink shadow-sm placeholder:text-ink/35 focus:border-violet-600 focus:ring-violet-600;
   }
 }

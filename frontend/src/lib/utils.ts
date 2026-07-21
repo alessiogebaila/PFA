@@ -1,6 +1,7 @@
-import { type ClassValue, clsx } from "clsx"
-import { twMerge } from "tailwind-merge"
- 
-export function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs))
+import React from "react";
+
+/** Smooth-scroll to a section without putting a #hash in the URL. */
+export function scrollToId(e: React.MouseEvent, id: string) {
+  e.preventDefault();
+  document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
 }

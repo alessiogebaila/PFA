@@ -1,65 +1,50 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: [
-    "./src/**/*.{js,jsx,ts,tsx}",
-  ],
+  content: ["./src/**/*.{js,jsx,ts,tsx}", "./public/index.html"],
   theme: {
     extend: {
       colors: {
-        border: "hsl(var(--border))",
-        input: "hsl(var(--input))",
-        ring: "hsl(var(--ring))",
-        background: "hsl(var(--background))",
-        foreground: "hsl(var(--foreground))",
-        primary: {
-          DEFAULT: "hsl(var(--primary))",
-          foreground: "hsl(var(--primary-foreground))",
+        // Purple gradient world (background shell)
+        violet: {
+          950: "#1e0a4e", // deepest indigo, bottom-right of gradient
+          900: "#2e1065",
+          800: "#4c1d95",
+          700: "#6d28d9",
+          600: "#7c3aed",
+          500: "#8b5cf6",
         },
-        secondary: {
-          DEFAULT: "hsl(var(--secondary))",
-          foreground: "hsl(var(--secondary-foreground))",
+        magenta: "#b01fd4", // top-left glow of the brand gradient
+        // Yellow — spent only on CTAs and key highlights
+        amber: {
+          300: "#fde047",
+          400: "#facc15",
+          500: "#eab308",
+          600: "#ca8a04",
         },
-        destructive: {
-          DEFAULT: "hsl(var(--destructive))",
-          foreground: "hsl(var(--destructive-foreground))",
-        },
-        muted: {
-          DEFAULT: "hsl(var(--muted))",
-          foreground: "hsl(var(--muted-foreground))",
-        },
-        accent: {
-          DEFAULT: "hsl(var(--accent))",
-          foreground: "hsl(var(--accent-foreground))",
-        },
-        popover: {
-          DEFAULT: "hsl(var(--popover))",
-          foreground: "hsl(var(--popover-foreground))",
-        },
-        card: {
-          DEFAULT: "hsl(var(--card))",
-          foreground: "hsl(var(--card-foreground))",
-        },
+        // Light "paper" surfaces floating on the dark gradient
+        paper: "#faf8ff",
+        ink: "#231038",
       },
-      borderRadius: {
-        lg: "var(--radius)",
-        md: "calc(var(--radius) - 2px)",
-        sm: "calc(var(--radius) - 4px)",
+      fontFamily: {
+        display: ['"Bricolage Grotesque"', "system-ui", "sans-serif"],
+        body: ["Figtree", "system-ui", "sans-serif"],
       },
       keyframes: {
-        "accordion-down": {
-          from: { height: 0 },
-          to: { height: "var(--radix-accordion-content-height)" },
+        streak: {
+          "0%": { transform: "translate(-8%, -8%)" },
+          "50%": { transform: "translate(8%, 8%)" },
+          "100%": { transform: "translate(-8%, -8%)" },
         },
-        "accordion-up": {
-          from: { height: "var(--radix-accordion-content-height)" },
-          to: { height: 0 },
+        "fade-up": {
+          from: { opacity: "0", transform: "translateY(24px)" },
+          to: { opacity: "1", transform: "translateY(0)" },
         },
       },
       animation: {
-        "accordion-down": "accordion-down 0.2s ease-out",
-        "accordion-up": "accordion-up 0.2s ease-out",
+        streak: "streak 24s ease-in-out infinite",
+        "fade-up": "fade-up 0.7s ease-out both",
       },
     },
   },
   plugins: [require("@tailwindcss/forms")],
-}
+};

@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect
 from django.core.exceptions import ValidationError
-from django.core.mail import send_mail
 from django.http import JsonResponse
+from .emails import send_booking_emails
 from .models import Pfa
 
 
@@ -31,31 +31,12 @@ def meet_us_view(request):
             ora_client = request.POST.get('ora')
             mesaj_client = request.POST.get('mesaj')
             
-            client = Pfa(id=id_client, firma_destinatie=firma_destinatie_client, nume=nume_client, firma=firma_client, email=email_client, 
+            client = Pfa(id=id_client, firma_destinatie=firma_destinatie_client, nume=nume_client, firma=firma_client, email=email_client,
                          telefon=telefon_client, data=data_client, ora=ora_client, mesaj=mesaj_client)
             client.save()
-            
-            # Send email to the client
-            send_mail(
-                'Intalnire confirmata',
-                f'''Va multumim, {nume_client} de la firma {firma_client}, pentru programarea intalnirii la {firma_destinatie_client}. Am primit cererea dumneavoatra pentru data de {data_client} la ora {ora_client}.
-                Va asteptam cu drag!''',
-                'office.contabilteam@gmail.com',  # From email
-                [email_client], 
-                fail_silently=False,
-            )
-            
-            # Send email to the host
-            #host_email = 'alessio.andrei276@gmail.com'  # old host email
-            host_email = 'office.contabilteam@gmail.com'  # host email
-            send_mail(
-                'Intalnire noua',
-                f"O noua intalnire a fost programata de {nume_client} de la firma {firma_client} pentru {firma_destinatie_client} pe data de {data_client} la ora {ora_client}.",
-                'office.contabilteam@gmail.com',
-                [host_email],
-                fail_silently=False,
-            )
-            
+
+            send_booking_emails(client)
+
             return redirect('success')
 
         except ValidationError as e:

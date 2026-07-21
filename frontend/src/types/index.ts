@@ -1,5 +1,6 @@
 export interface Appointment {
   id?: number;
+  firma_destinatie?: string;
   nume: string;
   firma: string;
   email: string;
